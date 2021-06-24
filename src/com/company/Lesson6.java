@@ -6,61 +6,91 @@ public class Lesson6 {
     public static void main(String[] args) {
         ex1();
         ex2();
+        ex3();
+        ex4();
+        ex51();
+        ex52();
+        ex6();
+    }
+
+    private static void ex6() {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        String res = String.valueOf(str.charAt(0));
+        int count = 1;
+
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i-1) == str.charAt(i)) {
+                count++;
+            } else {
+                res += count + String.valueOf(str.charAt(i));
+                count = 1;
+            }
+        }
+        res += count;
+        System.out.println(res);
+    }
+
+    private static void ex52() {
+        Scanner sc = new Scanner(System.in);
+        String in = sc.nextLine();
+        String st = sc.nextLine();
+
+        int count = 0;
+        int pos = 0;
+
+        for (int i = 0; i < in.length(); i++) {
+            if (in.charAt(i) == st.charAt(pos)) {
+                pos++;
+                if (pos == st.length()) {
+                    count++;
+                    pos = 0;
+                }
+            }
+            else {
+                pos = 0;
+            }
+        }
+        System.out.println(count);
+    }
+
+    private static void ex51() {
+        Scanner sc = new Scanner(System.in);
+        String write = sc.nextLine();
+        String litresFind = sc.nextLine();
+        System.out.println(write.split(litresFind, -1).length - 1);
+    }
+
+    private static void ex4() {
+        Scanner sc = new Scanner(System.in);
+        String unformattedDate = sc.nextLine();
+
+        String[] dateArray = unformattedDate.split("-");
+        String formattedDate = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
+        System.out.println(formattedDate);
+    }
+
+    private static void ex3() {
+        Scanner sc = new Scanner(System.in);
+        String st1 = sc.nextLine();
+        String st2 = sc.nextLine();
+
+        st1 = st1.replace(" ", "").trim();
+        st2 = st2.replace(" ", "").trim();
+
+        System.out.println(st1.equals(st2));
     }
 
     private static void ex2() {
-        Scanner scan = new Scanner(System.in);
-        char[][] matrix = new char[4][4];
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                matrix[i][j] = scan.next().charAt(0);
-            }
-        }
-
-        String yesNO = "YES";
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matrix[i][j] == matrix[i + 1][j] && matrix[i][j] == matrix[i][j + 1] && matrix[i][j] == matrix[i+1][j + 1]) {
-                    yesNO = "NO";
-                    break;
-                }
-            }
-            if(yesNO.equals("NO")) break;
-        }
-        System.out.println(yesNO);
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
+        Scanner sc = new Scanner(System.in);
+        String st = sc.nextLine();
+        System.out.println(st.endsWith("burg"));
     }
 
     private static void ex1() {
         Scanner sc = new Scanner(System.in);
-        String[] arr = new String[4];
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = sc.nextLine();
-        }
-
-        String prity = "YES";
-
-        for (int i = 1; i < 4; i++) {
-            String l1 = arr[i - 1];
-            String l2 = arr[i];
-            System.out.println("Strings l1: " + l1 + "\tand l2: " + l2);
-            for (int j = 1; j < 4; j++) {
-                if (l1.charAt(j - 1) == l2.charAt(j - 1) && l1.charAt(j) == l2.charAt(j) && l1.charAt(j - 1) == l1.charAt(j)) {
-                    prity = "NO";
-                    break;
-                }
-            }
-            if ("NO".equals(prity)) {
-                break;
-            }
-        }
-        System.out.println(prity);
+        String st = sc.nextLine();
+        System.out.println(st.replace("a", "b"));
     }
 }
